@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>istio on QNP Blog</title>
+    <link>https://example.com/tags/istio/</link>
+    <description>Recent content in istio on QNP Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id</language>
+    <lastBuildDate>Fri, 29 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://example.com/tags/istio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bagaimana Memasang Istio pada Kluster Kubernetes</title>
+      <link>https://example.com/istio-installation/</link>
+      <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/istio-installation/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

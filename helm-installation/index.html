@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Hugo 0.55.6" />
+  <link rel="stylesheet" href="https://example.com/css/normalize.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  
+  
+  
+  <link rel="stylesheet" href="https://example.com/css/cayman.87415a4997c8d6c666624ff26c8812f27f42b4cf5dc18c45fc8dcb0cd7d6d2f5.css">
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+  <title>Bagaimana Memasang Helm pada Kluster Kubernetes | QNP Blog</title>
+</head>
+
+<body>
+  <section class="page-header">
+  <h1 class="project-name">
+    QNP Technology Blog
+  </h1>
+  <h2 class="project-tagline">
+    What we continuously learn and pick up along the way
+  </h2>
+  <nav>
+    
+    
+      
+      
+      
+      
+      <a href="/" class="btn">Blog</a>
+    
+      
+      
+      
+      
+      <a href="/tags/" class="btn">Tags</a>
+    
+      
+      
+      
+      
+      <a href="/about/" class="btn">About</a>
+    
+  </nav>
+</section>
+
+  <section class="main-content">
+    
+  <h1>Bagaimana Memasang Helm pada Kluster Kubernetes</h1>
+  <div>
+    
+    <strong>Publish date: </strong>2019-07-14
+  </div>
+  
+  
+    <div>
+      <strong>Tags: </strong>
+      
+        
+        
+        
+      
+        
+        
+        
+      
+      <a href="https://example.com/tags/helm/">helm</a>, <a href="https://example.com/tags/kubernetes/">kubernetes</a>
+    </div>
+  
+  
+
+<p>By <a href="mailto:twahyono@qnp.co.id">twahyono</a></p>
+
+<h3 id="apa-itu-helm">Apa itu Helm?</h3>
+
+<p>Helm adalah <em>package manager</em> untuk Kubernetes, sebagaimana npm adalah <em>package manager</em> untuk JavaScript di  dalam lingkungan Node.js atau seperti <em>package manager</em> <a href="https://chocolatey.org">Chocolatey</a> untuk Windows. Helm memudahkan tim DevOps melakukan <em>deployment</em> aplikasi ke dalam kluster Kubernetes.</p>
+
+<p>Helm sendiri terdiri dari dua bagian: <em>Helm client</em> (helm) dan <em>Helm server</em> (Tiller). Ikuti langkah-langkah di bawah ini untuk memasang Helm pada kluster Kubernetes anda.</p>
+
+<h3 id="persiapan-awal">Persiapan Awal</h3>
+
+<ol>
+<li>Kluster Kubernetes yang telah berjalan.</li>
+<li><em>Tools</em> kubectl di mesin lokal.</li>
+</ol>
+
+<h3 id="langkah-1">Langkah 1</h3>
+
+<p>Lakukan hal berikut di <em>shell</em> Linux. Masuk ke direktori /tmp kemudian unduh <em>script</em> dari repo Helm di GitHub:</p>
+
+<pre><code>$ cd /tmp
+$ curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get &gt; install-helm.sh
+</code></pre>
+
+<p>Agar <em>script</em> tsb dapat dijalankan dengan gunakan perintah <code>chmod</code>:</p>
+
+<pre><code>$ chmod u+x install-helm.sh
+</code></pre>
+
+<p>Lanjutkan dengan menjalankan <em>script</em> berikut:</p>
+
+<pre><code>$ install ./install-helm.sh
+</code></pre>
+
+<p><em>Output</em>:</p>
+
+<pre><code>helm installed into /usr/local/bin/helm
+Run 'helm init' to configure helm.
+</code></pre>
+
+<p>Selanjutnya anda perlu memasang komponen Tiller pada kluster Kubernetes.</p>
+
+<h3 id="langkah-2-memasang-tiller">Langkah 2 - Memasang Tiller</h3>
+
+<h4 id="apa-itu-tiller">Apa itu Tiller?</h4>
+
+<p>Tiller merupakan komponen yang berjalan di dalam kluster Kubernetes dan bertanggung jawab untuk melakukan interaksi dengan Helm client dan melakukan proses antarmuka dengan Kubernetes API Server. Singkatnya Helm client mengelola <em>helm charts</em> dan Tiller akan mengelola <em>release</em>. Pada Helm versi 3 yang sedang dikembangkan, Tiller akan dihilangkan untuk alasan keamanan dan penyederhanaan proses pemasangan charts pada kluster Kubernetes.</p>
+
+<p>Agar Tiller dapat berjalan di dalam kluster Kubernetes maka perlu dibuat <em>serviceaccount</em> dengan <em>role</em> cluster-admin.</p>
+
+<pre><code>$ kubectl -n kube-system create serviceaccount tiller
+</code></pre>
+
+<p>Lanjutkan dengan memberi role cluster-admin:</p>
+
+<pre><code>$ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+</code></pre>
+
+<p>Kemudian pasanglah Tiller dengan perintah <em>helm init</em>:</p>
+
+<pre><code>helm init --service-account tiller
+</code></pre>
+
+<p><em>Output</em>:</p>
+
+<pre><code>. . .
+
+Tiller (the Helm server-side component) has been installed into your Kubernetes Cluster.
+
+Please note: by default, Tiller is deployed with an insecure 'allow unauthenticated users' policy.
+For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
+Happy Helming!
+</code></pre>
+
+<p>Sampai disini sudah selesai proses pemasangan Helm pada kluster Kubernetes anda. Selanjutnya anda bisa mulai mencoba meng- <em>install</em> helm charts.</p>
+
+<h3 id="langkah-3-memulai-helm-charts">Langkah 3 - Memulai helm charts</h3>
+
+<p>Paket aplikasi Helm disebut <em>charts</em>. Cara paling mudah adalah dengan memasang contoh <em>charts</em> yang disediakan oleh Helm.</p>
+
+<p>Lakukan terlebih dahulu pembaruan daftar <em>charts</em> yang tersedia:</p>
+
+<pre><code>helm repo update
+</code></pre>
+
+<p>Sebagai contoh, memasang aplikasi basisdata mysql dengan <em>charts</em> mysql:</p>
+
+<pre><code>helm install stable/mysql
+</code></pre>
+
+<p><em>Output</em>:</p>
+
+<pre><code>NAME:   angry-fox
+LAST DEPLOYED: Sun Jul 14 18:55:13 2019
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==&gt; v1/ConfigMap
+NAME                  DATA  AGE
+angry-fox-mysql-test  1     1s
+
+==&gt; v1/PersistentVolumeClaim
+NAME             STATUS   VOLUME   CAPACITY  ACCESS MODES  STORAGECLASS  AGE
+angry-fox-mysql  Pending  default  1s
+
+==&gt; v1/Pod(related)
+NAME                              READY  STATUS   RESTARTS  AGE
+angry-fox-mysql-6c45b64686-55ksv  0/2    Pending  0         1s
+
+==&gt; v1/Secret
+NAME             TYPE    DATA  AGE
+angry-fox-mysql  Opaque  2     1s
+
+==&gt; v1/Service
+NAME             TYPE       CLUSTER-IP  EXTERNAL-IP  PORT(S)   AGE
+angry-fox-mysql  ClusterIP  10.0.33.9   &lt;none&gt;       3306/TCP  1s
+
+==&gt; v1beta1/Deployment
+NAME             READY  UP-TO-DATE  AVAILABLE  AGE
+angry-fox-mysql  0/1    0           0          1s
+
+
+NOTES:
+MySQL can be accessed via port 3306 on the following DNS name from within your cluster:
+angry-fox-mysql.default.svc.cluster.local
+
+To get your root password run:
+
+    MYSQL_ROOT_PASSWORD=$(kubectl get secret --namespace default angry-fox-mysql -o jsonpath=&quot;{.data.mysql-root-password}&quot; | base64 --decode; echo)
+
+To connect to your database:
+
+1. Run an Ubuntu pod that you can use as a client:
+
+    kubectl run -i --tty ubuntu --image=ubuntu:16.04 --restart=Never -- bash -il
+
+2. Install the mysql client:
+
+    $ apt-get update &amp;&amp; apt-get install mysql-client -y
+
+3. Connect using the mysql cli, then provide your password:
+    $ mysql -h angry-fox-mysql -p
+
+To connect to your database directly from outside the K8s cluster:
+    MYSQL_HOST=127.0.0.1
+    MYSQL_PORT=3306
+
+    # Execute the following command to route the connection:
+    kubectl port-forward svc/angry-fox-mysql 3306
+
+    mysql -h ${MYSQL_HOST} -P${MYSQL_PORT} -u root -p${MYSQL_ROOT_PASSWORD}
+</code></pre>
+
+<p>Untuk melihat <em>release</em> aplikasi yang telah dilakukan Helm, lakukan perintah <em>helm ls</em>:</p>
+
+<pre><code>$ helm ls
+NAME            REVISION        UPDATED                         STATUS          CHART                   APP VERSION    NAMESPACE
+angry-fox       1               Sun Jul 14 18:55:13 2019        DEPLOYED        mysql-0.15.0            5.7.14         default
+</code></pre>
+
+<p>Untuk melakukan <em>uninstall release</em>, gunakan perintah <em>helm delete</em>:</p>
+
+<pre><code>$ helm delete angry-fox
+release angry-fox deleted
+</code></pre>
+
+<p>Untuk melihat status <em>release</em>:</p>
+
+<pre><code>LAST DEPLOYED: Sun Jul 14 18:55:13 2019
+NAMESPACE: default
+STATUS: DELETED
+</code></pre>
+
+<p>Selamat mencoba Helm! Dokumentasi lengkap mengenai Helm dapat anda lihat di <a href="https://helm.sh/docs/">sini</a>.</p>
+
+  
+
+  
+
+
+
+    <footer class="site-footer">
+  <span class="site-footer-credits">
+    Made with <a href="https://gohugo.io/">Hugo</a>. Themed by <a href="https://github.com/zwbetz-gh/cayman-hugo-theme">Cayman</a>. Deployed to <a href="https://www.github.com/">GitHub</a>.
+  </span>
+</footer>
+
+  </section>
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+</body>
+</html>

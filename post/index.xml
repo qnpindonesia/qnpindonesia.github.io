@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on QNP Blog</title>
+    <link>https://example.com/post/</link>
+    <description>Recent content in Posts on QNP Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id</language>
+    <lastBuildDate>Sun, 14 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bagaimana Memasang Helm pada Kluster Kubernetes</title>
+      <link>https://example.com/helm-installation/</link>
+      <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/helm-installation/</guid>
+      <description>By twahyono
+Apa itu Helm? Helm adalah package manager untuk Kubernetes, sebagaimana npm adalah package manager untuk JavaScript di dalam lingkungan Node.js atau seperti package manager Chocolatey untuk Windows. Helm memudahkan tim DevOps melakukan deployment aplikasi ke dalam kluster Kubernetes.
+Helm sendiri terdiri dari dua bagian: Helm client (helm) dan Helm server (Tiller). Ikuti langkah-langkah di bawah ini untuk memasang Helm pada kluster Kubernetes anda.
+Persiapan Awal  Kluster Kubernetes yang telah berjalan.</description>
+    </item>
+    
+    <item>
+      <title>Bagaimana Memasang Istio pada Kluster Kubernetes</title>
+      <link>https://example.com/istio-installation/</link>
+      <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/istio-installation/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
