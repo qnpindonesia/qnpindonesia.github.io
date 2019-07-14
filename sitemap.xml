@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://qnpindonesia.github.io/about/</loc>
+    <lastmod>2019-07-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://qnpindonesia.github.io/helm-installation/</loc>
     <lastmod>2019-07-14T00:00:00+00:00</lastmod>
   </url>
@@ -34,11 +39,6 @@
     <loc>https://qnpindonesia.github.io/tags/kubernetes/</loc>
     <lastmod>2019-07-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://qnpindonesia.github.io/about/</loc>
-    <lastmod>2019-03-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>

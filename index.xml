@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>About</title>
+      <link>https://qnpindonesia.github.io/about/</link>
+      <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://qnpindonesia.github.io/about/</guid>
+      <description>We are helping companies develop and run modern applications in the era of cloud native computing, from CI/CD pipeline, Microservices pattern, managing complex cloud infrastructure and resources, cost optimization and high velocity delivery. Choosing the right technologies and tools is never an easy task and require companies to not afraid of changes lest they will be left behind.
+Head over to our website www.qnp.co.id to know more how we can help companies create, manage and run their enterprise applications with the leading edge technologies.</description>
+    </item>
+    
+    <item>
       <title>Bagaimana Memasang Helm pada Kluster Kubernetes</title>
       <link>https://qnpindonesia.github.io/helm-installation/</link>
       <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
@@ -21,17 +31,6 @@
 Apa itu Helm? Helm adalah package manager untuk Kubernetes, sebagaimana npm adalah package manager untuk JavaScript di dalam lingkungan Node.js atau seperti package manager Chocolatey untuk Windows. Helm memudahkan tim DevOps melakukan deployment aplikasi ke dalam kluster Kubernetes.
 Helm sendiri terdiri dari dua bagian: Helm client (helm) dan Helm server (Tiller). Ikuti langkah-langkah di bawah ini untuk memasang Helm pada kluster Kubernetes anda.
 Persiapan Awal  Kluster Kubernetes yang telah berjalan.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://qnpindonesia.github.io/about/</link>
-      <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://qnpindonesia.github.io/about/</guid>
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
- https://github.</description>
     </item>
     
     <item>
