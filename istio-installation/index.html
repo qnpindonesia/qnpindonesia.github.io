@@ -61,7 +61,7 @@
   <h1>Instalasi Istio pada Kluster Kubernetes</h1>
   <div>
     
-    <strong>Publish date: </strong>2019-03-29
+    <strong>Publish date: </strong>2019-07-14
   </div>
   
   
@@ -80,10 +80,119 @@
         
         
       
-      <a href="https://qnpindonesia.github.io/tags/helm/">helm</a>, <a href="https://qnpindonesia.github.io/tags/istio/">istio</a>, <a href="https://qnpindonesia.github.io/tags/kubernetes/">kubernetes</a>
+        
+        
+        
+      
+      <a href="https://qnpindonesia.github.io/tags/helm/">helm</a>, <a href="https://qnpindonesia.github.io/tags/istio/">istio</a>, <a href="https://qnpindonesia.github.io/tags/kubernetes/">kubernetes</a>, <a href="https://qnpindonesia.github.io/tags/microservices/">microservices</a>
     </div>
   
   
+
+<p>By <a href="mailto:twahyono@qnp.co.id">twahyono</a></p>
+
+<h3 id="apa-itu-istio">Apa itu Istio?</h3>
+
+<p>Menurut <a href="https://istio.io/docs/concepts/what-is-istio/">dokumentasi</a>, Istio adalah aplikasi yang membantu anda untuk menghubungkan, mengamankan, mengontrol dan memantau <em>services</em> (<em>microservices</em>). Istio mengatasi permasalahan kerumitan transisi dari aplikasi monolitik ke aplikasi terdistribusi dengan arsitektur <em>microservices</em>.</p>
+
+<p>Ketika aplikasi berkembang kerumitan <em>microservices</em> semakin bertambah dan menyulitkan untuk mengelola dan memahami keterkaitan antara services satu dengan services lainnya. Dari sinilah istilah <em>services mesh</em> muncul. Istilah ini menggambarkan jaringan <em>microservices</em> yang membentuk suatu aplikasi dan interaksi antara services tsb.</p>
+
+<p>Dengan Istio dapat dilakukan hal-hal berikut:</p>
+
+<ul>
+<li><em>Load balancing</em> otomatis untuk HTTP, TCP, WebSocket dan gRPC.</li>
+<li><em>Traffic management</em> dengan <em>routing rules</em>, <em>retries</em>, <em>failovers</em>, <em>circuit breaker</em>, <em>fault injection</em>.</li>
+<li>Metriks dan monitoring.</li>
+<li>Mengatur keamanan komunikasi antar services.</li>
+<li><em>Deployment</em> dengan berbagai macam cara: <em>rollout</em>, <em>A/B</em>, <em>canary</em> dsb.</li>
+</ul>
+
+<h4 id="instalasi-istio-dengan-helm">Instalasi Istio dengan Helm</h4>
+
+<p>Kali ini kita akan melakukan installasi Istio dengan helm charts. Jika anda belum memasang Helm pada kluster Kubernetes anda, silakan melihat artikel <a href="https://qnpindonesia.github.io/helm-installation">ini</a>. Diasumsikan anda sudah memiliki kluster Kubernetes yang berjalan baik di lokal ataupun di Azure Kubernetes Services (AKS) ataupun Google Kubernetes Engine (GKE).</p>
+
+<p>Tambahkan repo Istio terlebih dahulu:</p>
+
+<pre><code>$ helm repo add istio.io https://storage.googleapis.com/istio-release/releases/1.1.7/charts/
+</code></pre>
+
+<p>Periksa hasil dari penambahan repo Istio tsb:</p>
+
+<pre><code>helm repo list
+</code></pre>
+
+<p><em>Output</em>:</p>
+
+<pre><code>NAME            URL
+stable          https://kubernetes-charts.storage.googleapis.com
+local           http://127.0.0.1:8879/charts
+istio.io        https://storage.googleapis.com/istio-release/releases/1.1.7/charts/
+</code></pre>
+
+<p>Kemudian install <em>Custom Resource Definition</em> Istio (CRD) dengan chart istio-init:</p>
+
+<pre><code>$ helm install --name istio-init --namespace istio-system istio.io/istio-init
+</code></pre>
+
+<p>Anda akan mendapatkan <em>output</em> seperti berikut:</p>
+
+<pre><code>NAME:   istio-init
+LAST DEPLOYED: Sun Jul 14 23:22:36 2019
+NAMESPACE: istio-system
+STATUS: DEPLOYED
+</code></pre>
+
+<p>Sekarang anda dapat menginstall Istio dengan helm chart. Sebaiknya turut diinstall juga grafana, aplikasi untuk menampilkan dashboard serta monitoring metriks serta kiali, aplikasi untuk melihat visualisasi keterkaitan antar microservices.</p>
+
+<pre><code>$ helm install --name istio --namespace istio-system --set grafana.enabled=true --set kiali.enabled=true istio.io/istio
+</code></pre>
+
+<p>Periksa <em>pods</em> yang muncul dari hasil instalasi Istio:</p>
+
+<pre><code>kubectl get pods -n istio-system
+</code></pre>
+
+<p>Jika berhasil maka terlihat seperti berikut:</p>
+
+<pre><code>NAME                                      READY     STATUS      RESTARTS   AGE                                          grafana-85689d5548-6zbtc                  1/1       Running     0          15h
+grafana-85689d5548-ctzvg                  1/1       Running     0          15h
+istio-citadel-5fdf5ccf85-mkt2l            1/1       Running     0          15h
+istio-egressgateway-6f887d4d46-vkvjh      1/1       Running     0          15h
+istio-galley-88c6c64b7-49hmz              1/1       Running     0          15h
+istio-ingressgateway-7646456c5c-hdvrl     1/1       Running     0          1d
+istio-init-crd-10-sh7dn                   0/1       Completed   0          6m
+istio-init-crd-11-64nlt                   0/1       Completed   0          6m
+istio-pilot-65bd87cb4c-8s4zp              2/2       Running     0          1d
+istio-policy-55cdb54666-hvshp             2/2       Running     0          15h
+istio-sidecar-injector-596f6bf5d5-qbl6k   1/1       Running     0          1d
+istio-telemetry-7dbb44954f-k2vgc          2/2       Running     0          15h
+istio-tracing-d444f578-mc4b4              1/1       Running     1          1d
+kiali-5bdc5b4d69-89lqn                    1/1       Running     0          15h
+kiali-5bdc5b4d69-cc624                    1/1       Running     0          1d
+prometheus-6c56b9bf49-46z97               1/1       Running     0          15h
+</code></pre>
+
+<p>Istio menggunakan mekanisme sidecar untuk menginstall Envoy proxy pada tiap pod yang dijalankan di Kubernetes. Untuk melakukan otomatisasi hal ini perlu ditambahkan label istio-injection=true untuk namespace yang dituju:</p>
+
+<pre><code>kubectl label namespace default istio-injection=enabled
+</code></pre>
+
+<p>Kemudian periksa hasil dari pelabelan tsb</p>
+
+<pre><code>kubectl get namespaces -L istio-injection
+</code></pre>
+
+<p><em>Output</em>:</p>
+
+<pre><code>NAME           STATUS    AGE       ISTIO-INJECTION
+default        Active    31d       enabled
+istio-system   Active    31d
+kube-public    Active    31d
+kube-system    Active    31d
+</code></pre>
+
+<p>Instalasi Istio sudah berhasil. Di artikel selanjutnya kita akan membahas bagaimana melakukan konfigurasi Istio untuk berbagai keperluan.</p>
+
   
 
   

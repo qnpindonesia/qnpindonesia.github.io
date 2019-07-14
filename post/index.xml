@@ -26,10 +26,12 @@ Persiapan Awal  Kluster Kubernetes yang telah berjalan.</description>
     <item>
       <title>Instalasi Istio pada Kluster Kubernetes</title>
       <link>https://qnpindonesia.github.io/istio-installation/</link>
-      <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://qnpindonesia.github.io/istio-installation/</guid>
-      <description></description>
+      <description>By twahyono
+Apa itu Istio? Menurut dokumentasi, Istio adalah aplikasi yang membantu anda untuk menghubungkan, mengamankan, mengontrol dan memantau services (microservices). Istio mengatasi permasalahan kerumitan transisi dari aplikasi monolitik ke aplikasi terdistribusi dengan arsitektur microservices.
+Ketika aplikasi berkembang kerumitan microservices semakin bertambah dan menyulitkan untuk mengelola dan memahami keterkaitan antara services satu dengan services lainnya. Dari sinilah istilah services mesh muncul. Istilah ini menggambarkan jaringan microservices yang membentuk suatu aplikasi dan interaksi antara services tsb.</description>
     </item>
     
   </channel>
