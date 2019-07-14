@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on QNP Blog</title>
-    <link>https://example.com/tags/</link>
+    <link>https://qnpindonesia.github.com/tags/</link>
     <description>Recent content in Tags on QNP Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>id</language>
     <lastBuildDate>Sun, 14 Jul 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://qnpindonesia.github.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>helm</title>
-      <link>https://example.com/tags/helm/</link>
+      <link>https://qnpindonesia.github.com/tags/helm/</link>
       <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/helm/</guid>
+      <guid>https://qnpindonesia.github.com/tags/helm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubernetes</title>
-      <link>https://example.com/tags/kubernetes/</link>
+      <link>https://qnpindonesia.github.com/tags/kubernetes/</link>
       <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/kubernetes/</guid>
+      <guid>https://qnpindonesia.github.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>istio</title>
-      <link>https://example.com/tags/istio/</link>
+      <link>https://qnpindonesia.github.com/tags/istio/</link>
       <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/istio/</guid>
+      <guid>https://qnpindonesia.github.com/tags/istio/</guid>
       <description></description>
     </item>
     

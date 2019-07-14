@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>helm on QNP Blog</title>
-    <link>https://example.com/tags/helm/</link>
+    <link>https://qnpindonesia.github.com/tags/helm/</link>
     <description>Recent content in helm on QNP Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>id</language>
     <lastBuildDate>Sun, 14 Jul 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://example.com/tags/helm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://qnpindonesia.github.com/tags/helm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Bagaimana Memasang Helm pada Kluster Kubernetes</title>
-      <link>https://example.com/helm-installation/</link>
+      <link>https://qnpindonesia.github.com/helm-installation/</link>
       <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/helm-installation/</guid>
+      <guid>https://qnpindonesia.github.com/helm-installation/</guid>
       <description>By twahyono
 Apa itu Helm? Helm adalah package manager untuk Kubernetes, sebagaimana npm adalah package manager untuk JavaScript di dalam lingkungan Node.js atau seperti package manager Chocolatey untuk Windows. Helm memudahkan tim DevOps melakukan deployment aplikasi ke dalam kluster Kubernetes.
 Helm sendiri terdiri dari dua bagian: Helm client (helm) dan Helm server (Tiller). Ikuti langkah-langkah di bawah ini untuk memasang Helm pada kluster Kubernetes anda.
@@ -25,10 +25,10 @@ Persiapan Awal  Kluster Kubernetes yang telah berjalan.</description>
     
     <item>
       <title>Bagaimana Memasang Istio pada Kluster Kubernetes</title>
-      <link>https://example.com/istio-installation/</link>
+      <link>https://qnpindonesia.github.com/istio-installation/</link>
       <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/istio-installation/</guid>
+      <guid>https://qnpindonesia.github.com/istio-installation/</guid>
       <description></description>
     </item>
     
