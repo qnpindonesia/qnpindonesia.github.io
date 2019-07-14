@@ -138,7 +138,7 @@ Run 'helm init' to configure helm.
 <pre><code>$ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
 </code></pre>
 
-<p>Kemudian pasanglah Tiller dengan perintah <em>helm init</em>:</p>
+<p>Kemudian pasanglah Tiller dengan perintah <code>helm init</code>:</p>
 
 <pre><code>helm init --service-account tiller
 </code></pre>
@@ -234,14 +234,14 @@ To connect to your database directly from outside the K8s cluster:
     mysql -h ${MYSQL_HOST} -P${MYSQL_PORT} -u root -p${MYSQL_ROOT_PASSWORD}
 </code></pre>
 
-<p>Untuk melihat <em>release</em> aplikasi yang telah dilakukan Helm, lakukan perintah <em>helm ls</em>:</p>
+<p>Untuk melihat <em>release</em> aplikasi yang telah dilakukan Helm, lakukan perintah <code>helm ls</code>:</p>
 
 <pre><code>$ helm ls
 NAME            REVISION        UPDATED                         STATUS          CHART                   APP VERSION    NAMESPACE
 angry-fox       1               Sun Jul 14 18:55:13 2019        DEPLOYED        mysql-0.15.0            5.7.14         default
 </code></pre>
 
-<p>Untuk melakukan <em>uninstall release</em>, gunakan perintah <em>helm delete</em>:</p>
+<p>Untuk melakukan <em>uninstall release</em>, gunakan perintah <code>helm delete</code>:</p>
 
 <pre><code>$ helm delete angry-fox
 release angry-fox deleted
