@@ -142,9 +142,9 @@ NAMESPACE: istio-system
 STATUS: DEPLOYED
 </code></pre>
 
-<p>Sekarang anda dapat menginstall Istio dengan helm chart. Sebaiknya turut diinstall juga grafana, aplikasi untuk menampilkan dashboard serta monitoring metriks serta kiali, aplikasi untuk melihat visualisasi keterkaitan antar microservices.</p>
+<p>Sekarang lakukan instalasi Istio dengan helm chart. Sebaiknya turut diinstall juga grafana, aplikasi untuk menampilkan dashboard serta monitoring metriks serta kiali, aplikasi untuk melihat visualisasi keterkaitan antar microservices. Aktifkan opsi konfigurasi dengan <code>--set grafana.enabled=true</code> atau <code>--set kiali.enabled=true</code>.</p>
 
-<pre><code>$ helm install --name istio --namespace istio-system --set grafana.enabled=true --set kiali.enabled=true istio.io/istio
+<pre><code>$ helm install --name istio --namespace istio-system --set grafana.enabled=true istio.io/istio
 </code></pre>
 
 <p>Periksa <em>pods</em> yang muncul dari hasil instalasi Istio:</p>
