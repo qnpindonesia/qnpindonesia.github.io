@@ -126,7 +126,7 @@ Run 'helm init' to configure helm.
 
 <h4 id="apa-itu-tiller">Apa itu Tiller?</h4>
 
-<p>Tiller merupakan komponen yang berjalan di dalam kluster Kubernetes dan bertanggung jawab untuk melakukan interaksi dengan Helm client dan melakukan proses antarmuka dengan Kubernetes API Server. Singkatnya Helm client mengelola <em>helm charts</em> dan Tiller akan mengelola <em>release</em>. Pada Helm versi 3 yang sedang dikembangkan, Tiller akan dihilangkan untuk alasan keamanan dan penyederhanaan proses pemasangan charts pada kluster Kubernetes.</p>
+<p>Tiller merupakan komponen yang berjalan di dalam kluster Kubernetes dan bertanggung jawab untuk melakukan interaksi dengan Helm client dan melakukan proses antarmuka dengan Kubernetes API Server. Singkatnya Helm client mengelola <em>helm charts</em> dan Tiller akan mengelola <em>release</em>. Pada Helm versi 3 yang sedang dikembangkan, Tiller akan dihilangkan untuk alasan keamanan dan penyederhanaan proses pemasangan <em>charts</em> pada kluster Kubernetes.</p>
 
 <p>Agar Tiller dapat berjalan di dalam kluster Kubernetes maka perlu dibuat <em>serviceaccount</em> dengan <em>role</em> cluster-admin.</p>
 
