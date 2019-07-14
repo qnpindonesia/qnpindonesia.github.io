@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Installasi Helm pada Kluster Kubernetes</title>
+      <title>Instalasi Helm pada Kluster Kubernetes</title>
       <link>https://qnpindonesia.github.io/helm-installation/</link>
       <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -24,7 +24,7 @@ Persiapan Awal  Kluster Kubernetes yang telah berjalan.</description>
     </item>
     
     <item>
-      <title>Installasi Istio pada Kluster Kubernetes</title>
+      <title>Instalasi Istio pada Kluster Kubernetes</title>
       <link>https://qnpindonesia.github.io/istio-installation/</link>
       <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
       
