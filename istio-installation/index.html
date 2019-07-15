@@ -173,7 +173,7 @@ kiali-5bdc5b4d69-cc624                    1/1       Running     0          1d
 prometheus-6c56b9bf49-46z97               1/1       Running     0          15h
 </code></pre>
 
-<p>Istio menggunakan mekanisme sidecar untuk menginstall Envoy proxy pada tiap pod yang dijalankan di Kubernetes. Untuk melakukan otomatisasi hal ini perlu ditambahkan label istio-injection=true untuk namespace yang dituju:</p>
+<p>Istio menggunakan mekanisme <em>sidecar</em> untuk memasang Envoy proxy pada tiap pod yang dijalankan di Kubernetes. Untuk melakukan otomatisasi hal ini perlu ditambahkan label istio-injection=true untuk <em>namespace</em> yang dituju:</p>
 
 <pre><code>kubectl label namespace default istio-injection=enabled
 </code></pre>
