@@ -89,9 +89,9 @@
 
 <h3 id="apa-itu-service">Apa itu Service?</h3>
 
-<p>Service digunakan untuk mengarahkan <em>traffic</em> ke aplikasi yang berada di kluster. Seperti diketahu di dalam kluster, pod secara dinamis dikelola oleh Kubernetes, pod bisa muncul dan hilang karena proses penjadwalan dan <em>autoscaling</em> dan menyebabkan alamat IPnya yang berubah-ubah (<em>ephemeral</em>). Untuk memberikan akses yang konsisten terhadap aplikasi di sekumpulan pod tsb maka diperlukan bentuk <em>service</em> ini. Kubernetes menyediakan 3 jenis <em>service</em> yang bisa digunakan:</p>
+<p>Service digunakan untuk mengarahkan <em>traffic</em> ke aplikasi yang berada di kluster. Seperti diketahui di dalam kluster, pod secara dinamis dikelola oleh Kubernetes <em>control plane</em>, pod bisa muncul dan hilang karena proses penjadwalan dan <em>autoscaling</em> dan menyebabkan alamat IPnya yang berubah-ubah (<em>ephemeral</em>). Untuk memberikan akses yang konsisten terhadap aplikasi di sekumpulan pod tsb maka diperlukan bentuk <em>service</em> ini. Kubernetes menyediakan 3 jenis <em>service</em> yang bisa digunakan:</p>
 
-<h3 id="clusterip">ClusterIP</h3>
+<h3 id="1-clusterip">1. ClusterIP</h3>
 
 <p>ClusterIP akan memberikan satu alamat IP untuk aplikasi yang bisa di akses di lingkungan internal kluster.</p>
 
@@ -119,7 +119,7 @@
 </figure>
 
 
-<h3 id="nodeport">NodePort</h3>
+<h3 id="2-nodeport">2. NodePort</h3>
 
 <p>NodePort menyediakan akses pada port yang sama di semua node yang selanjutnya <em>traffic</em> akan diarahkan ke aplikasi yang dituju.
 
@@ -146,7 +146,7 @@
 </figure>
 </p>
 
-<h3 id="loadbalancer">LoadBalancer</h3>
+<h3 id="3-loadbalancer">3. LoadBalancer</h3>
 
 <p><em>Load balancer</em> memberikan akses dari luar ke dalam aplikasi yang berjalan di dalam kluster dengan mekanisme <em>load balancing</em>.
 
