@@ -18,7 +18,7 @@
       
       <guid>https://qnpindonesia.github.io/understanding-kubernetes-services/</guid>
       <description>By twahyono
-Apa itu Service? Service digunakan untuk mengarahkan traffic ke aplikasi yang berada di kluster. Seperti diketahui di dalam kluster, pod secara dinamis dikelola oleh Kubernetes control plane, pod bisa muncul dan hilang karena proses penjadwalan dan autoscaling dan menyebabkan alamat IPnya yang berubah-ubah (ephemeral). Untuk memberikan akses yang konsisten terhadap aplikasi di sekumpulan pod tsb maka diperlukan bentuk service ini. Kubernetes menyediakan 3 jenis service yang bisa digunakan:</description>
+Apa itu Service? Kubernetes Service, di dalam artikel ini selanjutnya disebut service, digunakan untuk mengarahkan traffic ke aplikasi yang berada di kluster. Seperti diketahui di dalam kluster, pod secara dinamis dikelola oleh Kubernetes control plane, pod bisa muncul dan hilang karena proses penjadwalan dan autoscaling dan menyebabkan alamat IP pod berubah-ubah (ephemeral). Untuk memberikan akses yang konsisten terhadap aplikasi di sekumpulan pod tsb maka diperlukan bentuk service ini.</description>
     </item>
     
     <item>
