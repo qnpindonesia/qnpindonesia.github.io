@@ -21,7 +21,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
-  <title>Memahami Jenis-Jenis Kubernetes Services | QNP Blog</title>
+  <title>Memahami Jenis-Jenis Service Kubernetes | QNP Blog</title>
 </head>
 
 <body>
@@ -58,7 +58,7 @@
 
   <section class="main-content">
     
-  <h1>Memahami Jenis-Jenis Kubernetes Services</h1>
+  <h1>Memahami Jenis-Jenis Service Kubernetes</h1>
   <div>
     
     <strong>Publish date: </strong>2019-07-16
@@ -87,9 +87,9 @@
 
 <p>By <a href="mailto:twahyono@qnp.co.id">twahyono</a></p>
 
-<h3 id="apa-itu-services">Apa itu Services?</h3>
+<h3 id="apa-itu-service">Apa itu Service?</h3>
 
-<p>Service digunakan untuk mengarahkan <em>traffic</em> ke aplikasi yang berada di kluster. Di dalam kluster pod secara dinamis dikelola oleh Kubernetes, pod bisa muncul dan hilang dan karenanya memiliki alamat IP yang berubah-ubah. Untuk memberikan akses yang konsisten terhadap aplikasi di sekumpulan pod tsb maka diperlukan bentuk <em>service</em> ini. Kubernetes menyediakan 3 jenis <em>service</em> yang bisa digunakan:</p>
+<p>Service digunakan untuk mengarahkan <em>traffic</em> ke aplikasi yang berada di kluster. Seperti diketahu di dalam kluster, pod secara dinamis dikelola oleh Kubernetes, pod bisa muncul dan hilang karena proses penjadwalan dan <em>autoscaling</em> dan menyebabkan alamat IPnya yang berubah-ubah (<em>ephemeral</em>). Untuk memberikan akses yang konsisten terhadap aplikasi di sekumpulan pod tsb maka diperlukan bentuk <em>service</em> ini. Kubernetes menyediakan 3 jenis <em>service</em> yang bisa digunakan:</p>
 
 <h3 id="clusterip">ClusterIP</h3>
 

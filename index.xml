@@ -12,13 +12,13 @@
     
     
     <item>
-      <title>Memahami Jenis-Jenis Kubernetes Services</title>
+      <title>Memahami Jenis-Jenis Service Kubernetes</title>
       <link>https://qnpindonesia.github.io/understanding-kubernetes-services/</link>
       <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://qnpindonesia.github.io/understanding-kubernetes-services/</guid>
       <description>By twahyono
-Apa itu Services? Service digunakan untuk mengarahkan traffic ke aplikasi yang berada di kluster. Di dalam kluster pod secara dinamis dikelola oleh Kubernetes, pod bisa muncul dan hilang dan karenanya memiliki alamat IP yang berubah-ubah. Untuk memberikan akses yang konsisten terhadap aplikasi di sekumpulan pod tsb maka diperlukan bentuk service ini. Kubernetes menyediakan 3 jenis service yang bisa digunakan:
+Apa itu Service? Service digunakan untuk mengarahkan traffic ke aplikasi yang berada di kluster. Seperti diketahu di dalam kluster, pod secara dinamis dikelola oleh Kubernetes, pod bisa muncul dan hilang karena proses penjadwalan dan autoscaling dan menyebabkan alamat IPnya yang berubah-ubah (ephemeral). Untuk memberikan akses yang konsisten terhadap aplikasi di sekumpulan pod tsb maka diperlukan bentuk service ini. Kubernetes menyediakan 3 jenis service yang bisa digunakan:
 ClusterIP ClusterIP akan memberikan satu alamat IP untuk aplikasi yang bisa di akses di lingkungan internal kluster.</description>
     </item>
     
