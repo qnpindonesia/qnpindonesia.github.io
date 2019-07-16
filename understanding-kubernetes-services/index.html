@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Hugo 0.55.6" />
+  <link rel="stylesheet" href="https://qnpindonesia.github.io/css/normalize.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  
+  
+  
+  <link rel="stylesheet" href="https://qnpindonesia.github.io/css/cayman.87415a4997c8d6c666624ff26c8812f27f42b4cf5dc18c45fc8dcb0cd7d6d2f5.css">
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+  <title>Memahami Jenis-Jenis Kubernetes Services | QNP Blog</title>
+</head>
+
+<body>
+  <section class="page-header">
+  <h1 class="project-name">
+    QNP Technology Blog
+  </h1>
+  <h2 class="project-tagline">
+    What we continuously learn and pick up along the way
+  </h2>
+  <nav>
+    
+    
+      
+      
+      
+      
+      <a href="/" class="btn">Blog</a>
+    
+      
+      
+      
+      
+      <a href="/tags/" class="btn">Tags</a>
+    
+      
+      
+      
+      
+      <a href="/about/" class="btn">About</a>
+    
+  </nav>
+</section>
+
+  <section class="main-content">
+    
+  <h1>Memahami Jenis-Jenis Kubernetes Services</h1>
+  <div>
+    
+    <strong>Publish date: </strong>2019-07-16
+  </div>
+  
+  
+    <div>
+      <strong>Tags: </strong>
+      
+        
+        
+        
+      
+        
+        
+        
+      
+        
+        
+        
+      
+      <a href="https://qnpindonesia.github.io/tags/kubernetes/">kubernetes</a>, <a href="https://qnpindonesia.github.io/tags/pod/">pod</a>, <a href="https://qnpindonesia.github.io/tags/node/">node</a>
+    </div>
+  
+  
+
+<p>By <a href="mailto:twahyono@qnp.co.id">twahyono</a></p>
+
+<h3 id="apa-itu-services">Apa itu Services?</h3>
+
+<p>Service digunakan untuk mengarahkan <em>traffic</em> ke aplikasi yang berada di kluster. Di dalam kluster pod secara dinamis dikelola oleh Kubernetes, pod bisa muncul dan hilang dan karenanya memiliki alamat IP yang berubah-ubah. Untuk memberikan akses yang konsisten terhadap aplikasi di sekumpulan pod tsb maka diperlukan bentuk <em>service</em> ini. Kubernetes menyediakan 3 jenis <em>service</em> yang bisa digunakan:</p>
+
+<h3 id="clusterip">ClusterIP</h3>
+
+<p>ClusterIP akan memberikan satu alamat IP untuk aplikasi yang bisa di akses di lingkungan internal kluster.</p>
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<figure role="group" aria-describedby="caption-5a8a960b6617631ba2300f95dd69d8c2">
+  <a href="https://qnpindonesia.github.io/understanding-kubernetes-services/clusterip-detail.png" class="">
+    <img src="https://qnpindonesia.github.io/understanding-kubernetes-services/clusterip-detail_hu3eb170495207e7b0d1b44308c2cc3a85_21892_800x0_resize_box_2.png">
+  </a>
+  <figcaption id="caption-5a8a960b6617631ba2300f95dd69d8c2">
+    ClusterIP menyediakan IP statis dan bisa diakses dari dalam kluster.
+  </figcaption>
+</figure>
+
+
+<h3 id="nodeport">NodePort</h3>
+
+<p>NodePort akan membuka akses pada port tertentu di semua node yang akan diarahkan ke aplikasi yang dituju.
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<figure role="group" aria-describedby="caption-5058f1af8388633f609cadb75a75dc9d">
+  <a href="https://qnpindonesia.github.io/understanding-kubernetes-services/nodeport-detail.png" class="">
+    <img src="https://qnpindonesia.github.io/understanding-kubernetes-services/nodeport-detail_hu26e885fcbc7486262b32ccd7996cfb61_35227_800x0_resize_box_2.png">
+  </a>
+  <figcaption id="caption-5058f1af8388633f609cadb75a75dc9d">
+    .
+  </figcaption>
+</figure>
+</p>
+
+<h3 id="loadbalancer">LoadBalancer</h3>
+
+<p><em>Load balancer</em> memberikan akses dari luar ke dalam aplikasi yang berjalan di dalam kluster. <em>Load balancer</em> menyediakan IP yang bisa diakses dari luar kluster.
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<figure role="group" aria-describedby="caption-77db00f83888d6aa6b548f50667c98e8">
+  <a href="https://qnpindonesia.github.io/understanding-kubernetes-services/loadbalancer-detail.png" class="">
+    <img src="https://qnpindonesia.github.io/understanding-kubernetes-services/loadbalancer-detail_hue9af6538e07dc4de3f1970237429c9eb_20583_800x0_resize_box_2.png">
+  </a>
+  <figcaption id="caption-77db00f83888d6aa6b548f50667c98e8">
+    Load balancer memberikan public IP agar aplikasi di dalam kluster bisa diakses dari luar.
+  </figcaption>
+</figure>
+</p>
+
+  
+
+  
+
+
+
+    <footer class="site-footer">
+  <span class="site-footer-credits">
+    Made with <a href="https://gohugo.io/">Hugo</a>. Themed by <a href="https://github.com/zwbetz-gh/cayman-hugo-theme">Cayman</a>. Deployed to <a href="https://www.github.com/">GitHub</a>.
+  </span>
+</footer>
+
+  </section>
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+</body>
+</html>

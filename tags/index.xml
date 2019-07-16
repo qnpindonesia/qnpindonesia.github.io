@@ -6,10 +6,37 @@
     <description>Recent content in Tags on QNP Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>id</language>
-    <lastBuildDate>Sun, 14 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://qnpindonesia.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://qnpindonesia.github.io/tags/kubernetes/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://qnpindonesia.github.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>node</title>
+      <link>https://qnpindonesia.github.io/tags/node/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://qnpindonesia.github.io/tags/node/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pod</title>
+      <link>https://qnpindonesia.github.io/tags/pod/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://qnpindonesia.github.io/tags/pod/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>helm</title>
@@ -26,15 +53,6 @@
       <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://qnpindonesia.github.io/tags/istio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>https://qnpindonesia.github.io/tags/kubernetes/</link>
-      <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://qnpindonesia.github.io/tags/kubernetes/</guid>
       <description></description>
     </item>
     
