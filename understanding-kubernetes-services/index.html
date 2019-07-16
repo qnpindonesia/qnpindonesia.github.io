@@ -136,19 +136,19 @@
 
 
 
-<figure role="group" aria-describedby="caption-4b9ec885e2b344867ab3eed145cb4618">
+<figure role="group" aria-describedby="caption-2e7b065c1bafd899bf83acc6c8e66361">
   <a href="https://qnpindonesia.github.io/understanding-kubernetes-services/nodeport-detail.png" class="">
     <img src="https://qnpindonesia.github.io/understanding-kubernetes-services/nodeport-detail_hu26e885fcbc7486262b32ccd7996cfb61_35227_800x0_resize_box_2.png">
   </a>
-  <figcaption id="caption-4b9ec885e2b344867ab3eed145cb4618">
-    Port 31504 dibuka untuk menyediakan akses ke aplikasi. Aplikasi dapat diakses melalui <a href="NodeIP:NodePort">NodeIP:NodePort</a>
+  <figcaption id="caption-2e7b065c1bafd899bf83acc6c8e66361">
+    Port 31504 dibuka untuk menyediakan akses ke aplikasi. Aplikasi dapat diakses melalui &lt;<a href="NodeIP:NodePort">NodeIP:NodePort</a>&gt;
   </figcaption>
 </figure>
 </p>
 
 <h3 id="3-loadbalancer">3. LoadBalancer</h3>
 
-<p><em>Load balancer</em> memberikan akses dari luar ke dalam aplikasi yang berjalan di dalam kluster dengan mekanisme <em>load balancing</em>. Saat anda membuat service LoadBalancer maka service NodePort dan ClusterIP akan secara otomatis dibuat juga. Mekanisme di dalam LoadBalancer akan mengarahkan <em>traffic</em> menuju ke NodePort.
+<p><em>Load balancer</em> memberikan akses dari luar ke dalam aplikasi yang berjalan di dalam kluster dengan mekanisme <em>load balancing</em>. Saat anda membuat service LoadBalancer maka service NodePort dan ClusterIP akan secara otomatis dibuat juga. Mekanisme internal yang terjadi, LoadBalancer akan mengarahkan <em>traffic</em> menuju ke NodePort dan selanjutnya ke ClusterIP.
 
 
 
