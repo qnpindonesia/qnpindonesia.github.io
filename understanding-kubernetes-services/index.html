@@ -109,19 +109,19 @@
 
 
 
-<figure role="group" aria-describedby="caption-5a8a960b6617631ba2300f95dd69d8c2">
+<figure role="group" aria-describedby="caption-6c9d4f3ef2591760686ee6bfa38b159b">
   <a href="https://qnpindonesia.github.io/understanding-kubernetes-services/clusterip-detail.png" class="">
     <img src="https://qnpindonesia.github.io/understanding-kubernetes-services/clusterip-detail_hu3eb170495207e7b0d1b44308c2cc3a85_21892_800x0_resize_box_2.png">
   </a>
-  <figcaption id="caption-5a8a960b6617631ba2300f95dd69d8c2">
-    ClusterIP menyediakan IP statis dan bisa diakses dari dalam kluster.
+  <figcaption id="caption-6c9d4f3ef2591760686ee6bfa38b159b">
+    IP statis disediakan untuk bisa diakses dari dalam kluster.
   </figcaption>
 </figure>
 
 
 <h3 id="nodeport">NodePort</h3>
 
-<p>NodePort akan membuka akses pada port tertentu di semua node yang akan diarahkan ke aplikasi yang dituju.
+<p>NodePort menyediakan akses pada port yang sama di semua node yang selanjutnya <em>traffic</em> akan diarahkan ke aplikasi yang dituju.
 
 
 
@@ -148,7 +148,7 @@
 
 <h3 id="loadbalancer">LoadBalancer</h3>
 
-<p><em>Load balancer</em> memberikan akses dari luar ke dalam aplikasi yang berjalan di dalam kluster. <em>Load balancer</em> menyediakan IP yang bisa diakses dari luar kluster.
+<p><em>Load balancer</em> memberikan akses dari luar ke dalam aplikasi yang berjalan di dalam kluster dengan mekanisme <em>load balancing</em>.
 
 
 
@@ -163,12 +163,12 @@
 
 
 
-<figure role="group" aria-describedby="caption-77db00f83888d6aa6b548f50667c98e8">
+<figure role="group" aria-describedby="caption-405e8bde6e4c1d1684b408b4bf6a8e97">
   <a href="https://qnpindonesia.github.io/understanding-kubernetes-services/loadbalancer-detail.png" class="">
     <img src="https://qnpindonesia.github.io/understanding-kubernetes-services/loadbalancer-detail_hue9af6538e07dc4de3f1970237429c9eb_20583_800x0_resize_box_2.png">
   </a>
-  <figcaption id="caption-77db00f83888d6aa6b548f50667c98e8">
-    Load balancer memberikan public IP agar aplikasi di dalam kluster bisa diakses dari luar.
+  <figcaption id="caption-405e8bde6e4c1d1684b408b4bf6a8e97">
+    IP publik pada load balancer agar aplikasi di dalam kluster bisa diakses dari luar.
   </figcaption>
 </figure>
 </p>
