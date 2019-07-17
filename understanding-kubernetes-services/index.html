@@ -148,7 +148,8 @@
 
 <h3 id="3-loadbalancer">3. LoadBalancer</h3>
 
-<p><em>Load balancer</em> memberikan akses dari luar ke dalam aplikasi yang berjalan di dalam kluster dengan mekanisme <em>load balancing</em>. Saat anda membuat service LoadBalancer maka service NodePort dan ClusterIP akan secara otomatis dibuat juga. Mekanisme internal yang terjadi, LoadBalancer akan mengarahkan <em>traffic</em> menuju ke NodePort dan selanjutnya ke ClusterIP.
+<p><em>Load balancer</em> memberikan akses dari luar ke dalam aplikasi yang berjalan di dalam kluster dengan mekanisme <em>load balancing</em>. Saat anda membuat service LoadBalancer maka service NodePort dan ClusterIP akan secara otomatis dibuat juga. Mekanisme internal yang terjadi, LoadBalancer akan mengarahkan <em>traffic</em> menuju ke NodePort dan selanjutnya ke ClusterIP. Untuk menggunakan service ini anda harus memiliki kluster Kubernetes yang berjalan <em>cloud provider</em> di AWS, GKE atau AKS. Jika anda menjalankan di lokal anda harus mensetup sendiri _load<em>balancer</em> tsb.</p>
+
 
 
 
@@ -171,7 +172,7 @@
     IP publik pada load balancer agar aplikasi di dalam kluster bisa diakses dari luar.
   </figcaption>
 </figure>
-</p>
+
 
   
 
