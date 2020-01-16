@@ -121,23 +121,51 @@ let json = await resp.json();
 
 <h3 id="adding-timeout">Adding timeout</h3>
 
-<p>OK now we want to have the capability if within specific amount of time the fetch request still not returning any data we want to timeout message cause we don&rsquo;t want to wait any longer. For thise purpose we can create to promise and running it parallel which ever promise finish first we take the result.</p>
+<p>OK now we want to have the capability if within specific amount of time the fetch request still not returning any data we want the timeout message cause we don&rsquo;t want to wait any longer. For this purpose we can create two promises and running it in parallel and wait which ever promise finish first we will take the result.</p>
 
 <pre><code>let promise1 = fetch(someUrl, {signal});
 
 let promise2 = new Promise(resolve=&gt;{
     setTimeout(async () =&gt; {
-            ctrl.abort() // abort fetch request
+            abortCtrl.abort() // abort fetch request
             resolve(&quot;timeout&quot;)
         }, 500) // timeout in 500ms
 })
 
-let result = await Promise.race(promise1, promise2);
+let result = await Promise.race([promise1, promise2]);
 </code></pre>
 
 <p>Promise.race methods will return only single promise result that finish execution first.</p>
 
 <h3 id="putting-it-all-together">Putting it all together</h3>
+
+<p>Let&rsquo;s create new fetch function that has timeout parameter.</p>
+
+<pre><code>async function fetchWithTimeout(url, timeout) {
+    let ctrl = new AbortController()
+    let signal = ctrl.signal
+
+    let fetchData = fetch(url, {signal})
+        .then(resp =&gt; resp.json())
+        .then(json=&gt;json)
+        .catch(err =&gt; {throw err}) // sent error stack trace
+
+    // set timeout
+    let timeOut = new Promise(resolve =&gt; {
+        setTimeout(async () =&gt; {
+            ctrl.abort() // abort fetch request
+            resolve(&quot;timeout&quot;)
+        }, timeout)
+    })
+
+    let result = await Promise.race([fetchData, timeOut])
+    return result
+}
+</code></pre>
+
+<h3 id="limitations">Limitations</h3>
+
+<p>It will work with GET method only and it will return json object/data. In next article we will modify the function so it can accept POST method and return other data type.</p>
 
   
 
