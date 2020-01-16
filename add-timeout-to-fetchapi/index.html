@@ -85,10 +85,31 @@
 
 <h3 id="introducing-abortcontroller">Introducing AbortController</h3>
 
-<p>It allows you to abort one or more web request when desired. To create AbortController object do following:</p>
+<p>It allows you to abort one or more web request when desired by sending abort signal to Fetch API. To create AbortController object do following:</p>
 
 <pre><code>var abortCtrl = new AbortController();
+var signal = abortCtrl.signal(); // store the signal to be use in fetch request
 </code></pre>
+
+<p>To send the abort signal do following:</p>
+
+<pre><code>abortCtrl.abort()
+</code></pre>
+
+<h3 id="fetch-request-with-signal-parameter">Fetch request with signal parameter</h3>
+
+<p>Then we put signal as parameter in the fetch request, for example (replace api_key with your own key):</p>
+
+<pre><code>let url = &quot;http://maps.openweathermap.org/maps/2.0/weather/TA2/{z}/{x}/{y}?date=1527811200&amp;opacity=0.9&amp;fill_bound=true&amp;appid={api_key}&quot;;
+let resp = await fetch(url,{signal})
+let json = await resp.json();
+</code></pre>
+
+<p>When abort signal is received the fetch request will return reject promise with AbortError.</p>
+
+<h3 id="adding-timeout">Adding timeout</h3>
+
+<h3 id="putting-it-all-together">Putting it all together</h3>
 
   
 
