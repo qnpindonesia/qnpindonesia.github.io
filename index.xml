@@ -17,7 +17,9 @@
       <pubDate>Thu, 16 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://qnpindonesia.github.io/add-timeout-to-fetchapi/</guid>
-      <description>By twahyono</description>
+      <description> By twahyono
+Introducing AbortController It allows you to abort one or more web request when desired. To create AbortController object do following:
+var abortCtrl = new AbortController();  </description>
     </item>
     
     <item>
