@@ -18,9 +18,10 @@
       
       <guid>https://qnpindonesia.github.io/add-timeout-to-fetchapi/</guid>
       <description>By twahyono
-Introducing AbortController It allows you to abort one or more web request when desired by sending abort signal to Fetch API. To create AbortController object do following:
-var abortCtrl = new AbortController(); var signal = abortCtrl.signal(); // store the signal to be use in fetch request  To send the abort signal do following:
-abortCtrl.abort()  Fetch request with signal parameter Then we put signal as parameter in the fetch request, for example (replace api_key with your own key):</description>
+The goal We want to add timeout capability to already excellent Fetch API with something as simple as adding timeout parameter:
+var resp = await fetch(someUrl);  to something like:
+var resp = await fetch(someUrl,timeout);  Introducing AbortController It allows you to abort one or more web request when desired by sending abort signal to Fetch API. To create AbortController object do the following:
+var abortCtrl = new AbortController(); var signal = abortCtrl.</description>
     </item>
     
     <item>

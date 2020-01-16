@@ -83,9 +83,21 @@
 
 <p>By <a href="mailto:twahyono@qnp.co.id">twahyono</a></p>
 
+<h3 id="the-goal">The goal</h3>
+
+<p>We want to add timeout capability to already excellent Fetch API with something as simple as adding timeout parameter:</p>
+
+<pre><code>var resp = await fetch(someUrl);
+</code></pre>
+
+<p>to something like:</p>
+
+<pre><code>var resp = await fetch(someUrl,timeout);
+</code></pre>
+
 <h3 id="introducing-abortcontroller">Introducing AbortController</h3>
 
-<p>It allows you to abort one or more web request when desired by sending abort signal to Fetch API. To create AbortController object do following:</p>
+<p>It allows you to abort one or more web request when desired by sending abort signal to Fetch API. To create AbortController object do the following:</p>
 
 <pre><code>var abortCtrl = new AbortController();
 var signal = abortCtrl.signal(); // store the signal to be use in fetch request
@@ -108,6 +120,22 @@ let json = await resp.json();
 <p>When abort signal is received the fetch request will return reject promise with AbortError.</p>
 
 <h3 id="adding-timeout">Adding timeout</h3>
+
+<p>OK now we want to have the capability if within specific amount of time the fetch request still not returning any data we want to timeout message cause we don&rsquo;t want to wait any longer. For thise purpose we can create to promise and running it parallel which ever promise finish first we take the result.</p>
+
+<pre><code>let promise1 = fetch(someUrl, {signal});
+
+let promise2 = new Promise(resolve=&gt;{
+    setTimeout(async () =&gt; {
+            ctrl.abort() // abort fetch request
+            resolve(&quot;timeout&quot;)
+        }, 500) // timeout in 500ms
+})
+
+let result = await Promise.race(promise1, promise2);
+</code></pre>
+
+<p>Promise.race methods will return only single promise result that finish execution first.</p>
 
 <h3 id="putting-it-all-together">Putting it all together</h3>
 
