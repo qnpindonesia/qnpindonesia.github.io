@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on QNP Blog</title>
+    <link>https://qnpindonesia.github.io/tags/javascript/</link>
+    <description>Recent content in javascript on QNP Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id</language>
+    <lastBuildDate>Thu, 16 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://qnpindonesia.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Add Timeout to Fetch API</title>
+      <link>https://qnpindonesia.github.io/add-timeout-to-fetchapi/</link>
+      <pubDate>Thu, 16 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://qnpindonesia.github.io/add-timeout-to-fetchapi/</guid>
+      <description>By twahyono</description>
+    </item>
+    
+  </channel>
+</rss>

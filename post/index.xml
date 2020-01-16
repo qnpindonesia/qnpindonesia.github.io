@@ -6,10 +6,19 @@
     <description>Recent content in Posts on QNP Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>id</language>
-    <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://qnpindonesia.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Add Timeout to Fetch API</title>
+      <link>https://qnpindonesia.github.io/add-timeout-to-fetchapi/</link>
+      <pubDate>Thu, 16 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://qnpindonesia.github.io/add-timeout-to-fetchapi/</guid>
+      <description>By twahyono</description>
+    </item>
     
     <item>
       <title>Memahami Jenis-Jenis Service Kubernetes</title>
