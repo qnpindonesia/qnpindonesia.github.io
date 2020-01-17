@@ -135,7 +135,7 @@ let promise2 = new Promise(resolve=&gt;{
 let result = await Promise.race([promise1, promise2]);
 </code></pre>
 
-<p>Promise.race methods will return only single promise result that finish execution first.</p>
+<p>Above code will run promise1 and promise 2 in parallel. Promise.race methods will return only single promise result that finish the execution first. If promise1 finish first than promise 2 it will return the fetch data. If promise2 finish first it will cancel task promise1 and return string &lsquo;timeout&rsquo;.</p>
 
 <h3 id="putting-it-all-together">Putting it all together</h3>
 
