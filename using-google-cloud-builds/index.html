@@ -21,7 +21,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
-  <title>Tags | QNP Blog</title>
+  <title>Cloud Build Series #1: Deploying application to Google Kubernetes Services with Cloud Build | QNP Blog</title>
 </head>
 
 <body>
@@ -58,99 +58,75 @@
 
   <section class="main-content">
     
-  <h1>Tags</h1>
-  <ul>
+  <h1>Cloud Build Series #1: Deploying application to Google Kubernetes Services with Cloud Build</h1>
+  <div>
     
-    
+    <strong>Publish date: </strong>2020-01-20
+  </div>
+  
+  
+    <div>
+      <strong>Tags: </strong>
       
+        
+        
+        
       
+        
+        
+        
       
-      <li>
-        (3)
-        <a href="https://qnpindonesia.github.io/tags/kubernetes/">
-          kubernetes
-        </a>
-      </li>
-      
-    
-      
-      
-      
-      <li>
-        (2)
-        <a href="https://qnpindonesia.github.io/tags/helm/">
-          helm
-        </a>
-      </li>
-      
-    
-      
-      
-      
-      <li>
-        (2)
-        <a href="https://qnpindonesia.github.io/tags/javascript/">
-          javascript
-        </a>
-      </li>
-      
-    
-      
-      
-      
-      <li>
-        (2)
-        <a href="https://qnpindonesia.github.io/tags/react/">
-          react
-        </a>
-      </li>
-      
-    
-      
-      
-      
-      <li>
-        (1)
-        <a href="https://qnpindonesia.github.io/tags/istio/">
-          istio
-        </a>
-      </li>
-      
-    
-      
-      
-      
-      <li>
-        (1)
-        <a href="https://qnpindonesia.github.io/tags/microservices/">
-          microservices
-        </a>
-      </li>
-      
-    
-      
-      
-      
-      <li>
-        (1)
-        <a href="https://qnpindonesia.github.io/tags/node/">
-          node
-        </a>
-      </li>
-      
-    
-      
-      
-      
-      <li>
-        (1)
-        <a href="https://qnpindonesia.github.io/tags/pod/">
-          pod
-        </a>
-      </li>
-      
-    
-  </ul>
+      <a href="https://qnpindonesia.github.io/tags/javascript/">javascript</a>, <a href="https://qnpindonesia.github.io/tags/react/">react</a>
+    </div>
+  
+  
+
+<p>By <a href="mailto:twahyono@qnp.co.id">twahyono</a></p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ul>
+<li>You have Google Cloud account login</li>
+<li>You have Google Cloud SDK installed locally</li>
+<li>Container registry to store your docker image</li>
+<li>Google Repo to connect to your source code in Github</li>
+</ul>
+
+<h2 id="creating-new-kubernetes-cluster">Creating New Kubernetes Cluster</h2>
+
+<p>Create new cluster with g1-small machine type. For this trial purpose we will use preemptible machine to keep the cost down. Preemptible means we are using spare capacity available from GCP to create node. This node will be restart by Google every 24 hours.</p>
+
+<pre><code>$ gcloud compute machine-types list --filter=zone=asia-southeast1-a
+
+$ gcloud container clusters create my-cluster --machine-type=g1-small --preemptible --zone=asia-southeast1-a
+</code></pre>
+
+<p>Verify that nodes are being created.</p>
+
+<pre><code>$ kubectl get nodes
+NAME                                        STATUS   ROLES    AGE   VERSION
+gke-my-cluster-default-pool-8d0c1fcb-gc08   Ready    &lt;none&gt;   19s   v1.13.11-gke.14
+gke-my-cluster-default-pool-8d0c1fcb-hjjh   Ready    &lt;none&gt;   18s   v1.13.11-gke.14
+gke-my-cluster-default-pool-8d0c1fcb-n9b8   Ready    &lt;none&gt;   20s   v1.13.11-gke.14
+
+</code></pre>
+
+<p>Check for the namespace created</p>
+
+<pre><code>$ kubectl get ns
+NAME          STATUS   AGE
+default       Active   85s
+kube-public   Active   68s
+kube-system   Active   68s
+</code></pre>
+
+<h2 id="creating-google-cloud-build-trigger-to-automatic-deployment-of-application">Creating Google Cloud Build trigger to automatic deployment of application</h2>
+
+  
+
+  
+
+
 
     <footer class="site-footer">
   <span class="site-footer-credits">

@@ -6,10 +6,20 @@
     <description>Recent content in javascript on QNP Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>id</language>
-    <lastBuildDate>Thu, 16 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://qnpindonesia.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cloud Build Series #1: Deploying application to Google Kubernetes Services with Cloud Build</title>
+      <link>https://qnpindonesia.github.io/using-google-cloud-builds/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://qnpindonesia.github.io/using-google-cloud-builds/</guid>
+      <description>By twahyono
+Prerequisites  You have Google Cloud account login You have Google Cloud SDK installed locally Container registry to store your docker image Google Repo to connect to your source code in Github  Creating New Kubernetes Cluster Create new cluster with g1-small machine type. For this trial purpose we will use preemptible machine to keep the cost down. Preemptible means we are using spare capacity available from GCP to create node.</description>
+    </item>
     
     <item>
       <title>Adding Timeout to Fetch API</title>
