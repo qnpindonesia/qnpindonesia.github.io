@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>k8s on QNP Blog</title>
+    <link>https://qnpindonesia.github.io/tags/k8s/</link>
+    <description>Recent content in k8s on QNP Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id</language>
+    <lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://qnpindonesia.github.io/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cloud Build Series #1: Deploying application to Google Kubernetes Services with Cloud Build</title>
+      <link>https://qnpindonesia.github.io/using-google-cloud-builds/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://qnpindonesia.github.io/using-google-cloud-builds/</guid>
+      <description>By twahyono
+Prerequisites  You have Google Cloud account login You have Google Cloud SDK installed locally Container registry to store your docker image Google Repo to connect to your source code in Github  Creating New Kubernetes Cluster Create new cluster with g1-small machine type. For this trial purpose we will use preemptible machine to keep the cost down. Preemptible means we are using spare capacity available from GCP to create node.</description>
+    </item>
+    
+  </channel>
+</rss>
