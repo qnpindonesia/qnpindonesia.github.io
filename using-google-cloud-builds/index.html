@@ -100,8 +100,7 @@
 <ul>
 <li>You have Google Cloud account login</li>
 <li>You have Google Cloud SDK installed locally</li>
-<li>Container registry to store your docker image</li>
-<li>Google Repo to connect to your source code in Github</li>
+<li>Enable billing for your project</li>
 <li>You must activate Kubernetes Engine API, Cloud Build API, Repository API</li>
 <li>Sample project provided at <a href="https://github.com/twahyono/cloudbuildsample.git">sample</a></li>
 </ul>
@@ -158,9 +157,64 @@ kube-system   Active   68s
 <h2 id="creating-google-cloud-build-trigger-to-automatic-deployment-of-application">Creating Google Cloud Build trigger to automatic deployment of application</h2>
 
 <ul>
-<li>Go to Google Cloud build and choose to create new trigger</li>
+<li>Go to Google Cloud Build and choose to create new trigger</li>
 <li>Choose your source repository either in Github or Google Repository</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<figure role="group" aria-describedby="caption-4ea92b5935bac0c4799e56c62de39e93">
+  <a href="https://qnpindonesia.github.io/using-google-cloud-builds/create-trigger.png" class="">
+    <img src="https://qnpindonesia.github.io/using-google-cloud-builds/create-trigger_hua4ec758196b3c54c41ad833538c4d541_25149_800x0_resize_box_2.png">
+  </a>
+  <figcaption id="caption-4ea92b5935bac0c4799e56c62de39e93">
+    Connect repository and create trigger
+  </figcaption>
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<figure role="group" aria-describedby="caption-31ccf306315cff55b6065536a364af01">
+  <a href="https://qnpindonesia.github.io/using-google-cloud-builds/connect-repo.png" class="">
+    <img src="https://qnpindonesia.github.io/using-google-cloud-builds/connect-repo_hu62726bee47e220db3d0d00b8dac13bdc_41578_800x0_resize_box_2.png">
+  </a>
+  <figcaption id="caption-31ccf306315cff55b6065536a364af01">
+    edit your trigger
+  </figcaption>
+</figure>
+
+
+<ul>
 <li>Create your own cloudbuild.yaml file (sample available in the Github)</li>
+
+<li><p>To learn the basic of cloud build configuration open <a href="https://cloud.google.com/cloud-build/docs/build-config">here</a></p>
+
+<pre><code></code></pre></li>
 </ul>
 
   
