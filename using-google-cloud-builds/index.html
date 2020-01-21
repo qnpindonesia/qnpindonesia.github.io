@@ -311,13 +311,10 @@ myreact-app-d5f85b778-k76dz   1/1     Running   0          26m
 <p>Verify service creation</p>
 
 <pre><code>$ kubectl get svc
-
-</code></pre>
-
-<p>NAME          TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)        AGE
-kubernetes    ClusterIP      10.3.240.1     <none>         443/TCP        33m
+NAME          TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)        AGE
+kubernetes    ClusterIP      10.3.240.1     &lt;none&gt;         443/TCP        33m
 myreact-app   LoadBalancer   10.3.241.212   35.198.196.3   80:31119/TCP   21m
-```</p>
+</code></pre>
 
 <p>Try open external ip with your browser, in this case <a href="http://35.198.196.3">http://35.198.196.3</a>
 
