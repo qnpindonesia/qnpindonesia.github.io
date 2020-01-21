@@ -105,6 +105,10 @@
 <li>Sample project provided at <a href="https://github.com/twahyono/cloudbuildsample.git">sample</a></li>
 </ul>
 
+<h2 id="goal">Goal</h2>
+
+<p>You want to make automatic deployment whenever the developer push some new commit in the application source code repository.</p>
+
 <h2 id="creating-new-kubernetes-cluster">Creating New Kubernetes Cluster</h2>
 
 <p>Create new cluster with f1-micro machine type. For this trial purpose we will use preemptible machine to keep the cost down. Preemptible means we are using spare capacity available from GCP to create node. This node will be restart by Google every 24 hours.</p>
@@ -159,6 +163,7 @@ kube-system   Active   68s
 <ul>
 <li>Go to Google Cloud Build and choose to create new trigger</li>
 <li>Choose your source repository either in Github or Google Repository</li>
+<li></li>
 </ul>
 
 
@@ -209,6 +214,8 @@ kube-system   Active   68s
 </figure>
 
 
+<h2 id="preparing-cloud-build-yaml">Preparing Cloud Build yaml</h2>
+
 <ul>
 <li>Create your own cloudbuild.yaml file (sample available in the Github)</li>
 <li>To learn the basic of cloud build configuration open <a href="https://cloud.google.com/cloud-build/docs/build-config">here</a></li>
@@ -220,7 +227,7 @@ Set your cluster to [cluster-name]</p>
 <pre><code>$ gcloud config set container/cluster my-cluster
 </code></pre>
 
-<p>Create cloudbuild.yaml file put in your repo. Cloud Build will running code inside this file whenever you push new commit in the repo and automatically deploy application in the Kubernetes Engine.</p>
+<p>Create cloudbuild.yaml file and put in the the root directory of your project. Cloud Build will running code inside this file whenever you push new commit in the repo and automatically deploy application in the Kubernetes Engine.</p>
 
 <p>cloudbuild.yaml file content:</p>
 
@@ -313,7 +320,30 @@ kubernetes    ClusterIP      10.3.240.1     <none>         443/TCP        33m
 myreact-app   LoadBalancer   10.3.241.212   35.198.196.3   80:31119/TCP   21m
 ```</p>
 
-<p>Try open external ip with your browser, in this case <a href="http://35.198.196.3">http://35.198.196.3</a></p>
+<p>Try open external ip with your browser, in this case <a href="http://35.198.196.3">http://35.198.196.3</a>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<figure role="group" aria-describedby="caption-d4ccd39b95dc994d800873a414e0725f">
+  <a href="https://qnpindonesia.github.io/using-google-cloud-builds/running-app.png" class="">
+    <img src="https://qnpindonesia.github.io/using-google-cloud-builds/running-app_hu8b03a1519ef180d3d1de3c1eafdc764c_55370_800x0_resize_box_2.png">
+  </a>
+  <figcaption id="caption-d4ccd39b95dc994d800873a414e0725f">
+    myreact-app
+  </figcaption>
+</figure>
+</p>
 
   
 
