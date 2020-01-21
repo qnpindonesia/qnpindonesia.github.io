@@ -21,7 +21,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
-  <title>Cloud Build Series #1: Deploying application to Google Kubernetes Services with Cloud Build | QNP Blog</title>
+  <title>Cloud Build Series #1: Automatic deployment to Google Kubernetes Services with Cloud Build | QNP Blog</title>
 </head>
 
 <body>
@@ -58,7 +58,7 @@
 
   <section class="main-content">
     
-  <h1>Cloud Build Series #1: Deploying application to Google Kubernetes Services with Cloud Build</h1>
+  <h1>Cloud Build Series #1: Automatic deployment to Google Kubernetes Services with Cloud Build</h1>
   <div>
     
     <strong>Publish date: </strong>2020-01-20
@@ -211,11 +211,109 @@ kube-system   Active   68s
 
 <ul>
 <li>Create your own cloudbuild.yaml file (sample available in the Github)</li>
-
-<li><p>To learn the basic of cloud build configuration open <a href="https://cloud.google.com/cloud-build/docs/build-config">here</a></p>
-
-<pre><code></code></pre></li>
+<li>To learn the basic of cloud build configuration open <a href="https://cloud.google.com/cloud-build/docs/build-config">here</a></li>
 </ul>
+
+<p>Make sure you already set all default config to proper value to ensure Google Cloud Build step will not failed.
+Set your cluster to [cluster-name]</p>
+
+<pre><code>$ gcloud config set container/cluster my-cluster
+</code></pre>
+
+<p>Create cloudbuild.yaml file put in your repo. Cloud Build will running code inside this file whenever you push new commit in the repo and automatically deploy application in the Kubernetes Engine.</p>
+
+<p>cloudbuild.yaml file content:</p>
+
+<pre><code>steps:
+- id: 'build image'
+  name: 'gcr.io/cloud-builders/docker'
+  args: 
+    - 'build'
+    - '-t'
+    - 'gcr.io/${PROJECT_ID}/myreact-app:$SHORT_SHA'
+    - '.'
+    - '-f'
+    - './Dockerfile'
+  timeout: 1000s
+- id: 'push to container registry'
+  name: 'gcr.io/cloud-builders/docker'
+  args: 
+    - 'push'
+    - 'gcr.io/${PROJECT_ID}/myreact-app:$SHORT_SHA'
+- id: 'deploy to gke'
+  name: 'gcr.io/cloud-builders/gcloud'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}'
+    - 'KUBECONFIG=/.kube/config'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+          
+          gcloud container clusters get-credentials your-k8s-cluster-name --project your-project-id --zone your-compute-zone
+          sed -i 's|gcr.io/project-id/myreact-app|gcr.io/$PROJECT_ID/myreact-app:$SHORT_SHA|' ./deployment.yaml
+          kubectl apply -f ./deployment.yaml
+timeout: 2000s
+</code></pre>
+
+<p>And deployment.yaml will contains Kubernetes instruction to deploy container image to Kubernetes cluster:</p>
+
+<pre><code>apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: myreact-app
+  name: myreact-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myreact-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: myreact-app
+    spec:
+      containers:
+      - image: gcr.io/project-id/myreact-app
+        imagePullPolicy: Always
+        name: myreact-app
+
+</code></pre>
+
+<p>Check in the cloud build history if the trigger was run successfully into completion.</p>
+
+<p>Verify that pods are running in the cluster</p>
+
+<pre><code>$ kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+myreact-app-d5f85b778-k76dz   1/1     Running   0          26m
+</code></pre>
+
+<p>Before you can access the pods from outside you need to create Kubernetes service to expose the pods</p>
+
+<pre><code>$ kubectl expose deployment myreact-app --port=80 --target-port=80 --type=LoadBalancer
+</code></pre>
+
+<p>Verify service creation</p>
+
+<pre><code>$ kubectl get svc
+
+</code></pre>
+
+<p>NAME          TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)        AGE
+kubernetes    ClusterIP      10.3.240.1     <none>         443/TCP        33m
+myreact-app   LoadBalancer   10.3.241.212   35.198.196.3   80:31119/TCP   21m
+```</p>
+
+<p>Try open external ip with your browser, in this case <a href="http://35.198.196.3">http://35.198.196.3</a></p>
 
   
 
