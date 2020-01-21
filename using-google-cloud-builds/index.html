@@ -102,15 +102,38 @@
 <li>You have Google Cloud SDK installed locally</li>
 <li>Container registry to store your docker image</li>
 <li>Google Repo to connect to your source code in Github</li>
+<li>You must activate Kubernetes Engine API, Cloud Build API, Repository API</li>
+<li>Sample project provided at <a href="https://github.com/twahyono/cloudbuildsample.git">sample</a></li>
 </ul>
 
 <h2 id="creating-new-kubernetes-cluster">Creating New Kubernetes Cluster</h2>
 
-<p>Create new cluster with g1-small machine type. For this trial purpose we will use preemptible machine to keep the cost down. Preemptible means we are using spare capacity available from GCP to create node. This node will be restart by Google every 24 hours.</p>
+<p>Create new cluster with f1-micro machine type. For this trial purpose we will use preemptible machine to keep the cost down. Preemptible means we are using spare capacity available from GCP to create node. This node will be restart by Google every 24 hours.</p>
+
+<p>Create new project in GCP and configure default zone</p>
+
+<pre><code>$ gcloud projects create atambua
+$ gcloud config set project atambua
+$ gcloud config set compute/zone asia-southeast1-a
+$ gcloud config list
+[compute]
+region = asia-southeast1
+zone = asia-southeast1-a
+[core]
+account = teddy@qnp.co.id
+disable_usage_reporting = True
+project = atambua
+</code></pre>
+
+<p>Check available machine type in your zone</p>
 
 <pre><code>$ gcloud compute machine-types list --filter=zone=asia-southeast1-a
 
-$ gcloud container clusters create my-cluster --machine-type=g1-small --preemptible --zone=asia-southeast1-a
+</code></pre>
+
+<p>Create new Kubernetes cluster</p>
+
+<pre><code>$ gcloud container clusters create my-cluster --machine-type=f1-micro --preemptible --zone=asia-southeast1-a
 </code></pre>
 
 <p>Verify that nodes are being created.</p>
@@ -133,6 +156,12 @@ kube-system   Active   68s
 </code></pre>
 
 <h2 id="creating-google-cloud-build-trigger-to-automatic-deployment-of-application">Creating Google Cloud Build trigger to automatic deployment of application</h2>
+
+<ul>
+<li>Go to Google Cloud build and choose to create new trigger</li>
+<li>Choose your source repository either in Github or Google Repository</li>
+<li>Create your own cloudbuild.yaml file (sample available in the Github)</li>
+</ul>
 
   
 

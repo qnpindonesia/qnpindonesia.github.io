@@ -18,7 +18,7 @@
       
       <guid>https://qnpindonesia.github.io/using-google-cloud-builds/</guid>
       <description>By twahyono
-Prerequisites  You have Google Cloud account login You have Google Cloud SDK installed locally Container registry to store your docker image Google Repo to connect to your source code in Github  Creating New Kubernetes Cluster Create new cluster with g1-small machine type. For this trial purpose we will use preemptible machine to keep the cost down. Preemptible means we are using spare capacity available from GCP to create node.</description>
+Prerequisites  You have Google Cloud account login You have Google Cloud SDK installed locally Container registry to store your docker image Google Repo to connect to your source code in Github You must activate Kubernetes Engine API, Cloud Build API, Repository API Sample project provided at sample  Creating New Kubernetes Cluster Create new cluster with f1-micro machine type. For this trial purpose we will use preemptible machine to keep the cost down.</description>
     </item>
     
     <item>
