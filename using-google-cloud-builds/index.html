@@ -149,20 +149,12 @@ gke-my-cluster-default-pool-8d0c1fcb-n9b8   Ready    &lt;none&gt;   20s   v1.13.
 
 </code></pre>
 
-<p>Check for the namespace created</p>
-
-<pre><code>$ kubectl get ns
-NAME          STATUS   AGE
-default       Active   85s
-kube-public   Active   68s
-kube-system   Active   68s
-</code></pre>
-
 <h2 id="creating-google-cloud-build-trigger-for-automatic-deployment">Creating Google Cloud Build trigger for automatic deployment</h2>
 
 <ul>
 <li>Go to Google Cloud Build and choose to create new trigger</li>
 <li>Connect your source repository either in Github or Google Repository to cloud build trigger</li>
+<li>Edit your trigger configuration and create cloudbuild.yaml file</li>
 </ul>
 
 
@@ -203,17 +195,41 @@ kube-system   Active   68s
 
 
 
-<figure role="group" aria-describedby="caption-31ccf306315cff55b6065536a364af01">
+<figure role="group" aria-describedby="caption-f8dc0be28a101545bffe639e1f24363d">
   <a href="https://qnpindonesia.github.io/using-google-cloud-builds/connect-repo.png" class="">
     <img src="https://qnpindonesia.github.io/using-google-cloud-builds/connect-repo_hu62726bee47e220db3d0d00b8dac13bdc_41578_800x0_resize_box_2.png">
   </a>
-  <figcaption id="caption-31ccf306315cff55b6065536a364af01">
-    edit your trigger
+  <figcaption id="caption-f8dc0be28a101545bffe639e1f24363d">
+    connect repo trigger
   </figcaption>
 </figure>
 
 
-<h2 id="preparing-cloud-build-yaml">Preparing Cloud Build yaml</h2>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<figure role="group" aria-describedby="caption-fdf4e7d513e9a76afeb4ff23cc0a64f5">
+  <a href="https://qnpindonesia.github.io/using-google-cloud-builds/edit-trigger.png" class="">
+    <img src="https://qnpindonesia.github.io/using-google-cloud-builds/edit-trigger_hu27c9e9690bb134775925282358cd5009_67471_800x0_resize_box_2.png">
+  </a>
+  <figcaption id="caption-fdf4e7d513e9a76afeb4ff23cc0a64f5">
+    edit trigger
+  </figcaption>
+</figure>
+
+
+<h2 id="preparing-cloudbuild-yaml-file">Preparing cloudbuild.yaml file</h2>
 
 <ul>
 <li>Create your own cloudbuild.yaml file (sample available in the Github)</li>
@@ -263,7 +279,9 @@ Set your cluster to [cluster-name]</p>
 timeout: 2000s
 </code></pre>
 
-<p>And deployment.yaml will contains Kubernetes instruction to deploy container image to Kubernetes cluster:</p>
+<h2 id="create-your-kubernetes-deployment">Create your Kubernetes deployment</h2>
+
+<p>This file will be apply in the cloud builder step id &ldquo;deploy to gke&rdquo;. File deployment.yaml will contains Kubernetes instruction to deploy container image to Kubernetes cluster:</p>
 
 <pre><code>apiVersion: extensions/v1beta1
 kind: Deployment
@@ -294,6 +312,8 @@ spec:
 
 </code></pre>
 
+<h2 id="evaluate-the-trigger-result-in-cloud-build-history">Evaluate the trigger result in Cloud Build history</h2>
+
 <p>Check in the cloud build history if the trigger was run successfully into completion.</p>
 
 <p>Verify that pods are running in the cluster</p>
@@ -302,6 +322,8 @@ spec:
 NAME                          READY   STATUS    RESTARTS   AGE
 myreact-app-d5f85b778-k76dz   1/1     Running   0          26m
 </code></pre>
+
+<h2 id="exposing-your-deployment-pods">Exposing your deployment/pods</h2>
 
 <p>Before you can access the pods from outside you need to create Kubernetes service to expose the pods</p>
 
@@ -316,6 +338,8 @@ kubernetes    ClusterIP      10.3.240.1     &lt;none&gt;         443/TCP        
 myreact-app   LoadBalancer   10.3.241.212   35.198.196.3   80:31119/TCP   21m
 
 </code></pre>
+
+<h2 id="check-your-application">Check your application</h2>
 
 <p>Try open external ip with your browser, in this case <a href="http://35.198.196.3">http://35.198.196.3</a>
 
