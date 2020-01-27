@@ -6,7 +6,7 @@
     <description>Recent content in k8s on QNP Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>id</language>
-    <lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://qnpindonesia.github.io/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Cloud Build Series #1: Automatic deployment to Google Kubernetes Engine with Cloud Build</title>
       <link>https://qnpindonesia.github.io/using-google-cloud-builds/</link>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://qnpindonesia.github.io/using-google-cloud-builds/</guid>
       <description>By twahyono
