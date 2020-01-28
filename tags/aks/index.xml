@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aks on QNP Blog</title>
+    <link>https://qnpindonesia.github.io/tags/aks/</link>
+    <description>Recent content in aks on QNP Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id</language>
+    <lastBuildDate>Mon, 27 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://qnpindonesia.github.io/tags/aks/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cloud Build Series #1: Automatic deployment to Google Kubernetes Engine with Cloud Build</title>
+      <link>https://qnpindonesia.github.io/using-google-cloud-builds/</link>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://qnpindonesia.github.io/using-google-cloud-builds/</guid>
+      <description>By twahyono
+Prerequisites  You have Google Cloud account login You have Google Cloud SDK installed locally Enable billing for your project You must activate Kubernetes Engine API, Cloud Build API, Repository API Sample project provided at sample  Goal You want to make automatic deployment whenever the developer push some new commit in the application source code repository.
+Creating New Kubernetes Cluster Create new cluster with f1-micro machine type.</description>
+    </item>
+    
+  </channel>
+</rss>
